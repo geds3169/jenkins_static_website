@@ -41,7 +41,7 @@ pipeline {
                         --output /dev/null \
                         --silent \
                         --write-out "%{http_code}" \
-                        "https://alexwlchan.net")
+                        "http://docker-jenkins.web-connectivity.fr:80")
 
                     if (( STATUS_CODE == 200 ))
                     then
