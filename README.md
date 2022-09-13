@@ -22,6 +22,6 @@ $Project CI/CD jenkins deploy a static website, training AJC$
 > 
 > Add a test phase with trivy (scanner vulnerability)
 
-__Warning__
+:warning:
 I decline all responsibility :grin:
 
