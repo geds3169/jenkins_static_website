@@ -37,7 +37,7 @@ pipeline {
                     echo "Testing Image..."
                     export http_proxy="${HTTP_PROXY}"
                     export https_proxy="${HTTPS_PROXY}"
-                    curl http://docker-jenkins.web-connectivity.fr:80 | grep -q "Hello world!"
+                    curl -I http://docker-jenkins.web-connectivity.fr:80
                     '''
                 }
             }
