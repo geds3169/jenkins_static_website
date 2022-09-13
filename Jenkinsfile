@@ -37,11 +37,17 @@ pipeline {
                     echo "Testing Image..."
                     export http_proxy="${HTTP_PROXY}"
                     export https_proxy="${HTTPS_PROXY}"
-                    curl_response=curl http://docker-jenkins.web-connectivity.fr:80"
-                    if [ $curl_reponse == "200" ]; then
-                        echo "Website is accessible"
+                    STATUS_CODE=$(curl \
+                        --output /dev/null \
+                        --silent \
+                        --write-out "%{http_code}" \
+                        "https://alexwlchan.net")
+
+                    if (( STATUS_CODE == 200 ))
+                    then
+                        echo "Website is up!"
                     else
-                        echo "Houston we have a problem"
+                        echo "Website is down!  Expected 200, got $STATUS_CODE"
                     fi
                     '''
                 }
