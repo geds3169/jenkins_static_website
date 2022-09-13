@@ -91,25 +91,24 @@ pipeline {
             }
         }
     }
-        stage('Push image in production and deploy it') {
-            when {
-                expression { GIT_BRANCH == 'origin/main' }
+    stage('Push image in production and deploy it') {
+        when {
+            expression { GIT_BRANCH == 'origin/main' }
+        }
+        agent any
+        environment {
+            HEROKU_API_KEY = credentials('HEROKU_GEDS')
             }
-            agent any
-            environment {
-                HEROKU_API_KEY = credentials('HEROKU_GEDS')
-                }
-                steps {
-                    script {
-                        sh '''
-                        export http_proxy="${HTTP_PROXY}"
-                        export https_proxy="${HTTP_PROXY}"
-                        heroku container:login
-                        heroku create $PRODUCTION || echo "project already exist"
-                        heroku container:push -a $PRODUCTION web
-                        heroku container:release -a $PRODUCTION web
-                        '''
-                    }
+            steps {
+                script {
+                    sh '''
+                    export http_proxy="${HTTP_PROXY}"
+                    export https_proxy="${HTTP_PROXY}"
+                    heroku container:login
+                    heroku create $PRODUCTION || echo "project already exist"
+                    heroku container:push -a $PRODUCTION web
+                    heroku container:release -a $PRODUCTION web
+                    '''
                 }
             }
         }
