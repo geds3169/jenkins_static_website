@@ -16,10 +16,10 @@ pipeline {
                 }
             }
         }
-        stage('Run container based on builded image') {
-            agent any
-            steps {
-                script {
+		stage('Run container based on builded image') {
+		agent any
+		steps {
+				script {
                     sh '''
                         echo "Cleaning Environment"
                         docker rm -f $IMAGE_NAME || echo "container does not exist"
@@ -40,7 +40,6 @@ pipeline {
                     '''
                 }
             }
-        }
         stage('Clean Container') {
             agent any
             steps {
@@ -70,5 +69,4 @@ pipeline {
             }
         }
     }
-
 }
