@@ -1,7 +1,7 @@
-$${\text{Jenkins }}\textcolor{yellow}{\text{Static }}{\text{Website}}$$
+## $${\text{Jenkins }}\textcolor{yellow}{\text{Static }}{\text{Website}}$$
 
 $Project CI/CD jenkins deploy a static website, training AJC$
-
+----------------
 
 
 **_Contains:_**
