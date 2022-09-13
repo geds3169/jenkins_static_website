@@ -37,7 +37,12 @@ pipeline {
                     echo "Testing Image..."
                     export http_proxy="${HTTP_PROXY}"
                     export https_proxy="${HTTPS_PROXY}"
-                    #curl -I http://docker-jenkins.web-connectivity.fr:80"
+                    curl_response=curl http://docker-jenkins.web-connectivity.fr:80"
+                    if [ $curl_reponse == "200" ]; then
+                        echo "Website is accessible"
+                    else
+                        echo "Houston we have a problem"
+                    fi
                     '''
                 }
             }
