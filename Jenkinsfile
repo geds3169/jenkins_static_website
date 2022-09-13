@@ -9,7 +9,7 @@ pipeline {
     agent none
     stages {
         stage('Build image') {
-            any
+            agent any
             steps {
                 script {
                     sh 'docker build -t ${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG} .'
@@ -114,5 +114,3 @@ pipeline {
         }
     }
 }
-
-
