@@ -1,7 +1,7 @@
 pipeline { 
     environment { 
         ID_DOCKER = "${votre_id_dockerhub}"
-        IMAGE_NAME = "alpinehelloworld"
+        IMAGE_NAME = "nginx:1.21.1"
         IMAGE_TAG = "latest"
         STAGING = "${ID_DOCKER}-staging"
         PRODUCTION = "${ID_DOCKER}-production"
